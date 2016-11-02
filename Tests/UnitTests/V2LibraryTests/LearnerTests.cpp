@@ -91,7 +91,7 @@ void TestFSAdaGradLearner(size_t numParameters, size_t numMinibatches, const Dev
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
-    auto learner = FSAdaGradLearner(parameters, { { 0.5 } }, MomentumAsTimeConstantSchedule({ 10, 100, 1000 }));
+    auto learner = AdamLearner(parameters, { { 0.5 } }, MomentumAsTimeConstantSchedule({ 10, 100, 1000 }));
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
